@@ -24,7 +24,7 @@ class _HomepageState extends State<Homepage> {
         ),
         child: const Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               StartDayButton(),
               DateCard(),

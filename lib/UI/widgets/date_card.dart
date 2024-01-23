@@ -19,12 +19,12 @@ class DateCard extends StatelessWidget {
         shadowColor: Colors.black87,
         color: Theme.of(context).cardColor,
         child: SizedBox(
-          height: MediaQuery.of(context).size.height * .2,
+          height: MediaQuery.of(context).size.height * .1,
           width: MediaQuery.of(context).size.width * .75,
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Today is $formattedDate",style: Theme.of(context).textTheme.titleMedium,),
+              child: Text("Today is $formattedDate",style: Theme.of(context).textTheme.headlineMedium,),
             ),
           ),
         ),
