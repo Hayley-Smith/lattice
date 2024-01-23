@@ -33,7 +33,6 @@ class _WeatherCardState extends State<WeatherCard> {
         shadowColor: Colors.black87,
         color: Theme.of(context).cardColor,
         child: SizedBox(
-          height: MediaQuery.of(context).size.height * .1,
           width: MediaQuery.of(context).size.width * .75,
           child: Center(
             child: Padding(
