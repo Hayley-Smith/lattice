@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'UI/homepage.dart';
+
 class LatticeApp extends StatefulWidget {
   const LatticeApp({super.key});
 
@@ -10,6 +12,6 @@ class LatticeApp extends StatefulWidget {
 class _LatticeAppState extends State<LatticeApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return const MaterialApp(home: Homepage(),);
   }
 }
