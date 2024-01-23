@@ -5,7 +5,8 @@ import 'package:lattice/UI/widgets/start_day_button.dart';
 import 'package:lattice/UI/widgets/weather_card.dart';
 
 class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+
+  const Homepage({super.key,});
 
   @override
   State<Homepage> createState() => _HomepageState();
@@ -37,3 +38,4 @@ class _HomepageState extends State<Homepage> {
     );
   }
 }
+

@@ -8,7 +8,6 @@ class DateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // Get today's date
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('MMMM d, y').format(now);
@@ -23,7 +22,11 @@ class DateCard extends StatelessWidget {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("Today is $formattedDate",style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center,),
+              child: Text(
+                "Today is $formattedDate",
+                style: Theme.of(context).textTheme.headlineMedium,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ),

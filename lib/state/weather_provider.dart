@@ -23,7 +23,7 @@ print(response.body);
      String description = data['weather'][0]['main'];
       double temperature = data['main']['temp'];
 
-      _weatherData = ' Forcast calls for $description \n and it is $temperature°C';
+      _weatherData = ' Forcast calls for $description \n and it is $temperature°f';
     } else {
       _weatherData = 'Failed to fetch weather data';
     }
