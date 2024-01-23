@@ -12,6 +12,9 @@ class LatticeApp extends StatefulWidget {
 class _LatticeAppState extends State<LatticeApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Homepage(),);
+    return MaterialApp(
+      theme: ThemeData(cardColor: const Color.fromRGBO(231, 163, 174, 1)),
+      home: const Homepage(),
+    );
   }
 }
