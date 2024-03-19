@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../state/day_provider.dart';
 
 class StartDayButton extends StatelessWidget {
   const StartDayButton({
@@ -7,28 +10,32 @@ class StartDayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/dashboard');
-      },
-      child: Card(
-        elevation: 10,
-        shadowColor: Colors.black87,
-        color: Theme.of(context).cardColor,
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * .2,
-          width: MediaQuery.of(context).size.width * .9,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Start Day",
-                style: Theme.of(context).textTheme.displayLarge,
+    return Consumer<DayProvider>(
+      builder: (context, provider, child) {
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/dashboard');
+            provider.startDay();
+          },
+          child: Card(
+            elevation: 10,
+            shadowColor: Colors.black87,
+            color: Theme.of(context).cardColor,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * .9,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(28.0),
+                  child: Text(
+                    provider.currentDay.id,
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

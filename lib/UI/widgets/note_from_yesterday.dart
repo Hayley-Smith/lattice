@@ -20,7 +20,7 @@ class NoteFromYesterdayCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 "Note: 4 days until Pauls Party",
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: Theme.of(context).textTheme.titleMedium,
                 textAlign: TextAlign.center,
               ),
             ),

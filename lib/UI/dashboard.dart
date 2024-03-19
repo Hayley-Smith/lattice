@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lattice/UI/widgets/custom_drawer.dart';
 import 'package:lattice/UI/widgets/date_card.dart';
 import 'package:lattice/UI/widgets/food_tile.dart';
 import 'package:lattice/UI/widgets/gratitude_tile.dart';
@@ -16,20 +17,24 @@ class DashboardBody extends StatefulWidget {
 }
 
 class _DashboardBodyState extends State<DashboardBody> {
+  int crossAxisCount = 2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
+      appBar: AppBar(),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/latticebackground.png"),
+            image: AssetImage("assets/bgwhite.png"),
             fit: BoxFit.cover,
           ),
         ),
         child: Center(
           child: Column(
             children: [
-              Expanded(
+              const Expanded(
                 flex: 4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -43,28 +48,32 @@ class _DashboardBodyState extends State<DashboardBody> {
               ),
               Expanded(
                 flex: 5,
-                child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: FoodTile(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: WaterTile(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: GratitudeTile(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ObstacleTile(),
-                    ),
-                  ],
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    return GridView(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
+                      ),
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: FoodTile(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: WaterTile(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(4.0),
+                          child: GratitudeTile(),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: ObstacleTile(),
+                        ),
+                      ],
+                    );
+                  },
                 ),
               ),
             ],

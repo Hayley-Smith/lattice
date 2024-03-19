@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -24,7 +25,9 @@ class _WeatherCardState extends State<WeatherCard> {
 
     Provider.of<WeatherProvider>(context, listen: false)
       .getWeatherData();
-    print("get weather data");
+    if (kDebugMode) {
+      print("get weather data");
+    }
 
 
     return InkWell(
@@ -40,7 +43,7 @@ class _WeatherCardState extends State<WeatherCard> {
               child: Consumer<WeatherProvider>(
                 builder: (context, weatherProvider, _) => Text(
                   weatherProvider.weatherData,
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: Theme.of(context).textTheme.headlineSmall,
                   textAlign: TextAlign.center,
                 ),
               ),

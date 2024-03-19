@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lattice/UI/task_list_page.dart';
+import 'package:lattice/domain/task_data.dart';
+import 'package:lattice/state/task_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'UI/dashboard.dart';
 import 'UI/homepage.dart';
@@ -22,17 +26,21 @@ class _LatticeAppState extends State<LatticeApp> {
       routes: {
         '/home': (context) => Homepage(),
         '/dashboard': (context) => DashboardBody(),
-        '/task_detail': (context) => TaskDetail(),
+        '/task_detail': (context) =>
+            Consumer<TaskProvider>(
+              builder: (context, provider, child) {
+
+                return TaskDetail(task: provider.tasks[0],);
+              },
+            ),
+        '/task_list': (context) => TaskListPage(),
       },
       theme: ThemeData(
-        cardColor: const Color.fromRGBO(
-          231,
-          163,
-          174,
-          1,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         textTheme: GoogleFonts.laBelleAuroreTextTheme(
-          Theme.of(context).textTheme,
+          Theme
+              .of(context)
+              .textTheme,
         ),
       ),
       home: const Homepage(),
