@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:lattice/UI/task_detail.dart';
 import 'package:lattice/UI/widgets/custom_drawer.dart';
@@ -20,42 +18,60 @@ class TaskListPage extends StatelessWidget {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
-        title: const Text("Task List"),
+        title: Text(
+          "Keep your mind in the middle",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
       ),
-      body: Consumer<TaskProvider>(
-        builder: (context, provider, child) {
-          List<Task> tasks = provider.tasks;
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(opacity: .7,
+            image: AssetImage("assets/latticebackground.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Consumer<TaskProvider>(
+          builder: (context, provider, child) {
+            List<Task> tasks = provider.tasks;
 
-          return ReorderableListView(
-            onReorder: (int oldIndex, int newIndex) {
-              if (oldIndex < newIndex) {
-                newIndex -= 1;
-              }
-              final Task item = tasks.removeAt(oldIndex);
-              tasks.insert(newIndex, item);
-              provider.notifyListeners();
-            },
-            children: List.generate(
-              tasks.length,
-              (index) {
-                return ListTile(
-                  onTap: () {
-                    // Navigate to TaskDetail page with the selected task
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TaskDetail(task: tasks[index]),
-                      ),
-                    );
-
-                  },
-                  key: Key('$index'),
-                  title: Text(tasks[index].title),
-                );
+            return ReorderableListView(
+              onReorder: (int oldIndex, int newIndex) {
+                if (oldIndex < newIndex) {
+                  newIndex -= 1;
+                }
+                final Task item = tasks.removeAt(oldIndex);
+                tasks.insert(newIndex, item);
+                provider.notifyListeners();
               },
-            ),
-          );
-        },
+              children: List.generate(
+                tasks.length,
+                (index) {
+                  return ListTile(
+                    onTap: () {
+                      // Navigate to TaskDetail page with the selected task
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TaskDetail(task: tasks[index]),
+                        ),
+                      );
+                    },
+                    key: Key('$index'),
+                    title: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(18.0),
+                        child: Text(
+                          tasks[index].title,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

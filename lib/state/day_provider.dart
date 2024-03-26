@@ -1,26 +1,25 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../domain/day_data.dart';
 
 class DayProvider extends ChangeNotifier {
-   Day _currentDay = Day(
-     id: 'Start the Day',
-     start: DateTime.now(),
-     meals: [],
-   );
+  Day? _currentDay;
 
-  Day get currentDay => _currentDay;
+  Day? get currentDay => _currentDay;
+
+  bool isDayStarted() {
+    return _currentDay != null; // Check if _currentDay is not null
+  }
 
   void startDay() {
-
-    Day day = Day(
-      id: 'Day Started: 6:03am \nBedtime: 10:03pm',
-      start: DateTime.now(),
-      meals: [],
-    );
-    _currentDay = day;
+    if (!isDayStarted()) {
+      _currentDay = Day(
+        id: DateTime.now().toString(),
+        start: DateTime.now(),
+        meals: [],
+      );
+      notifyListeners();
+    }
   }
 
   void setCurrentDay(Day day) {

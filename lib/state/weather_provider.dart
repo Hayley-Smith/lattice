@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:lattice/config.dart' as config;
@@ -26,7 +25,7 @@ class WeatherProvider extends ChangeNotifier {
       double temperature = data['main']['temp'];
 
       _weatherData =
-          ' Forcast calls for $description \n and it is $temperature°f';
+          '$description and $temperature°f';
     } else {
       _weatherData = 'Failed to fetch weather data';
     }

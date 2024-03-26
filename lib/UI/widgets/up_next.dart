@@ -9,30 +9,40 @@ class UpNextCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/task_detail');
-      },
-      child: Card(
-        elevation: 10,
-        shadowColor: Colors.black87,
-        color: Colors.white,
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * .15,
-          width: MediaQuery.of(context).size.width * .9,
-          child: Center(
-            child: Consumer<TaskProvider>(
-              builder: (context, provider, child) {
-               Task upNext = provider.tasks[0];
-                return Text(
+    return Consumer<TaskProvider>(
+      builder: (context, provider, child) {
+        Task upNext = provider.tasks[0];
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/task_detail');
+          },
+          onLongPress: () {
+            Navigator.pushNamed(context, "/task_list");
+          },
+          onDoubleTap: () {
+            provider.markCompleted(upNext);
+
+          },
+          child: Card(
+            elevation: 10,
+            shadowColor: Colors.black87,
+            color: Colors.white,
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * .15,
+              width: MediaQuery.of(context).size.width * .9,
+              child: Center(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
                   upNext.title,
-                  style: Theme.of(context).textTheme.displaySmall,
-                );
-              },
+                  style: Theme.of(context).textTheme.titleLarge,
+                  softWrap: true,
+                ),
+              )),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

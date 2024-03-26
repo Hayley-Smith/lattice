@@ -19,11 +19,15 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          title: Text(
+            "Keep your mind in the middle",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
         ),
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/bgwhite.png"),
+              image: AssetImage("assets/latticebackground.png"),
               fit: BoxFit.cover,
             ),
           ),

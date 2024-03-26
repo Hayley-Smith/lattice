@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lattice/state/day_provider.dart';
+import 'package:lattice/state/gratitude_provider.dart';
+import 'package:lattice/state/obstacle_provider.dart';
 import 'package:lattice/state/task_provider.dart';
 import 'package:lattice/state/weather_provider.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +29,12 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (context) => TaskProvider(),
+
+        ), ChangeNotifierProvider(
+          create: (context) => GratitudeProvider(),
+
+        ), ChangeNotifierProvider(
+          create: (context) => ObstacleProvider(),
 
         ),
       ],

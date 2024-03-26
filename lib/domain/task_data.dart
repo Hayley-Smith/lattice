@@ -1,9 +1,9 @@
 class Task {
   final String id;
-  final String title;
-  final String body;
+   String title;
+ String body;
   final bool isCompleted;
-  final int streak;
+   int streak;
 
   Task({
     required this.isCompleted,
@@ -13,3 +13,7 @@ class Task {
     required this.body,
   });
 }
+
+
+
+

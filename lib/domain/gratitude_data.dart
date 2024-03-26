@@ -4,7 +4,7 @@ class Gratitude {
   final String body;
   final DateTime timeStamp;
 
-  Gratitude({
+  Gratitude( {
     required this.id,
     required this.title,
     required this.body,

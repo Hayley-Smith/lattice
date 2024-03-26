@@ -22,12 +22,17 @@ class _DashboardBodyState extends State<DashboardBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustomDrawer(),
-      appBar: AppBar(),
+      drawer: const CustomDrawer(),
+      appBar: AppBar(
+        title: Text(
+          "Keep your mind in the middle",
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/bgwhite.png"),
+            image: AssetImage("assets/latticebackground.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -79,6 +84,12 @@ class _DashboardBodyState extends State<DashboardBody> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, "/create_task");
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

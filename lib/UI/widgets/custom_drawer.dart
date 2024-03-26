@@ -54,6 +54,28 @@ class CustomDrawer extends StatelessWidget {
             Navigator.pushReplacementNamed(context, '/task_list');
           },
         ),
+        ListTile(
+          title: const Text(
+            'Gratitudes',
+            style: TextStyle(
+              fontSize: 26,
+            ),
+          ),
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/gratitude_list');
+          },
+        ),
+        ListTile(
+          title: const Text(
+            'Obstacles',
+            style: TextStyle(
+              fontSize: 26,
+            ),
+          ),
+          onTap: () {
+            Navigator.pushReplacementNamed(context, '/obstacle_list');
+          },
+        ),
       ],
     ));
   }
