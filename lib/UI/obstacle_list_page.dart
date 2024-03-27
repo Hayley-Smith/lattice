@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lattice/UI/widgets/custom_drawer.dart';
 import 'package:provider/provider.dart';
 import '../domain/obstacle_data.dart';
 import '../state/obstacle_provider.dart';
@@ -12,6 +13,7 @@ class ObstacleListPage extends StatelessWidget {
     Provider.of<ObstacleProvider>(context).getAllObstacles();
 
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: AppBar(
         title: const Text('Obstacles'),
       ),

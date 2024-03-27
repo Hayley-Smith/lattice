@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../domain/day_data.dart';
 
 class DayProvider extends ChangeNotifier {
@@ -19,6 +18,22 @@ class DayProvider extends ChangeNotifier {
         meals: [],
       );
       notifyListeners();
+    }
+  }
+
+  void endDay() {
+    if (isDayStarted()) {
+      // Get the current time
+      DateTime now = DateTime.now();
+
+      // Calculate the time 16 hours after the day started
+      DateTime dayEnd = _currentDay!.start.add(const Duration(hours: 16));
+
+      // Check if the current time is past the calculated end time
+      if (now.isAfter(dayEnd)) {
+        _currentDay = null; // Reset _currentDay to null
+        notifyListeners();
+      }
     }
   }
 

@@ -11,9 +11,9 @@ class GratitudeListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final gratitudeProvider = Provider.of<GratitudeProvider>(context);
 
-    return Scaffold(drawer: CustomDrawer(),
+    return Scaffold(
+      drawer: CustomDrawer(),
       appBar: AppBar(
-
         title: const Text('Gratitude List'),
       ),
       body: ListView.builder(
@@ -82,7 +82,7 @@ class GratitudeListPage extends StatelessWidget {
                   timeStamp: DateTime.now(),
                 );
                 provider.addGratitude(newGratitude);
-                Navigator.pop(context);
+                Navigator.pushNamed(context, "/gratitude_list");
               },
               child: const Text('Submit'),
             ),

@@ -21,17 +21,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           child: WeatherCard(),
         ),
-        ListTile(
-          title: const Text(
-            'Home',
-            style: TextStyle(
-              fontSize: 26,
-            ),
-          ),
-          onTap: () {
-            Navigator.pushReplacementNamed(context, '/home');
-          },
-        ),
+
         ListTile(
           title: const Text(
             'Dashboard',
